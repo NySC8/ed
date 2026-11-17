@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دوره ها | edmedical</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="w pg"><div class="bc"><a href="index.html">خانه</a><span>›</span>دوره ها</div>
+<div class="lay"><aside class="card side"><h2>فیلتر ها</h2>
+<details><summary><svg class="ic"><use href="#i-course"/></svg>نوع دوره</summary><div class="op"><label><input type="checkbox">رایگان<span>0</span></label><label><input type="checkbox">غیر رایگان<span>33</span></label></div></details>
+<details open><summary><svg class="ic"><use href="#i-clip"/></svg>دسته بندی ها</summary><div class="op"><label><input type="checkbox">دوره های آموزشی<span>30</span></label><label><input type="checkbox">دوره های علوم پایه پزشکی<span>11</span></label><label><input type="checkbox">مینی دوره ها بالینی<span>6</span></label><label><input type="checkbox">مینی دوره های تشخیصی و آزمایشگاهی<span>5</span></label><label><input type="checkbox">مینی دوره های علوم پزشکی و تخصصی<span>5</span></label><label><input type="checkbox">مینی دوره های مهارتی<span>6</span></label></div></details>
+<details><summary><svg class="ic"><use href="#i-user"/></svg>مدرس دوره</summary><div class="op">در انتظار اطلاعات</div></details>
+<details open><summary><svg class="ic"><use href="#i-cart"/></svg>محدوده قیمت</summary><div class="op rg"><label>از <input type="number" id="lo" value="550000"> تومان</label><label>تا <input type="number" id="hi" value="2900000"> تومان</label><input type="range" id="rg" min="550000" max="2900000" step="50000" value="2900000"></div></details>
+<details><summary><svg class="ic"><use href="#i-clock"/></svg>مدت دوره</summary><div class="op"><label><input type="checkbox">کمتر از ۵ ساعت<span>36</span></label><label><input type="checkbox">۵ تا ۱۰ ساعت<span>0</span></label><label><input type="checkbox">۱۰ تا ۲۰ ساعت<span>0</span></label><label><input type="checkbox">۲۰ تا ۳۰ ساعت<span>0</span></label><label><input type="checkbox">بیشتر از ۳۰ ساعت<span>0</span></label></div></details></aside>
+<section><div class="tb"><h2>دوره های آموزشی</h2><label>مرتب‌سازی: <select id="so"><option value="p">پرفروش‌ترین</option><option value="a">ارزان‌ترین</option><option value="d">گران‌ترین</option></select></label></div>
+<div class="g3" id="course-list" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))"></div></section></div></main>
+<div id="site-footer"></div>
+<script src="script.js"></script>
+</body>
+</html>
