@@ -24,7 +24,7 @@ mic:'M12 3a3 3 0 013 3v6a3 3 0 01-6 3zM6 11a6 6 0 0012 0M12 17v4'};
 const I=(n,c='')=>`<svg class="ic ${c}"><use href="#i-${n}"/></svg>`;
 document.body.insertAdjacentHTML('afterbegin','<svg width="0" height="0" style="position:absolute"><defs>'+Object.entries(P).map(([k,d])=>`<symbol id="i-${k}" viewBox="0 0 24 24"><path d="${d.replace(/(\.\d)00/g,'$1')}"/></symbol>`).join('')+'</defs></svg>');
 
-const L=[['index.html','صفحه اصلی'],['courses.html','دوره ها'],['blog.html','وبلاگ'],['podcasts.html','پادکست'],['index.html#plans','پلن های مشاوره']];
+const L=[['index.html','خانه'],['courses.html','دوره آموزشی'],['blog.html','وبلاگ'],['index.html#footer','درباره ما'],['index.html#contact','تماس با ما']];
 const cur=location.pathname.split('/').pop()||'index.html';
 const hd=document.getElementById('site-header');
 if(hd)hd.outerHTML=`<header class="top"><div class="w"><a class="logo" href="index.html">${I('pulse')}ed<i>medical</i></a>
@@ -33,14 +33,14 @@ if(hd)hd.outerHTML=`<header class="top"><div class="w"><a class="logo" href="ind
 const ft=document.getElementById('site-footer');
 if(ft)ft.outerHTML=`<footer class="ft2" id="footer"><div class="w"><div><a class="logo" href="index.html">${I('pulse')}ed<i>medical</i></a>
 <p>اد مدیکال، بستری جامع برای یادگیری هدفمند علوم پزشکی است؛ از آموزش مفهومی علوم پایه تا درک مباحث بالینی و ارتباط دانش تئوری با دنیای واقعی پزشکی .ما با ارائه دوره‌های آموزشی، بانک سؤاالت، آزمونهای تخصصی و محتوای علمی کاربردی، مسیر یادگیری دانشجویان علوم پزشکی را هموار میکنیم</p></div>
-<div><h4>دسترسی سریع</h4><ul><li><a href="index.html">صفحه اصلی</a></li><li><a href="courses.html">دوره ها</a></li><li><a href="index.html#plans">پلن های مشاوره</a></li><li><a href="blog.html">وبلاگ</a></li><li><a href="podcasts.html">پادکست</a></li></ul></div>
+<div><h4>دسترسی سریع</h4><ul><li><a href="index.html">صفحه اصلی</a></li><li><a href="courses.html">محصولات</a></li><li><a href="courses.html">دوره ها</a></li><li><a href="podcasts.html">پادکست</a></li><li><a href="index.html#plans">پلن های مشاوره</a></li><li><a href="index.html#footer">درباره ما</a></li></ul></div>
 <div><h4>تماس با ما</h4><ul class="ct"><li>${I('phone')}<div><small>شماره تماس</small><b>09125678500</b></div></li><li>${I('mail')}<div><small>ایمیل</small><b>Amirreza10184@gmail.com</b></div></li><li>${I('pin')}<div><small>آدرس</small>کرج – خیابان مطهری – ساختمان کشتی</div></li></ul></div></div>
 <div class="cp">تمامی حقوق این وبسایت متعلق به edmedical میباشد.</div></footer>`;
 document.getElementById('mb')?.addEventListener('click',()=>document.getElementById('nav').classList.toggle('open'));
 
 /* داده‌ها */
 const fa=n=>n.toLocaleString('en-US');
-const courses=[['بیوشیمی',2400000,58],['زبان انگلیسی',2400000,58],['ایمونولوژی (ایمنی‌شناسی)',2400000,58]];
+const courses=[['بیوشیمی',2400000,58],['زبان انگلیسی',2400000,58],['ایمونولوژی (ایمنی‌شناسی)',2400000,58],['انگل‌شناسی',2400000,58]];
 const courseCard=([t,p,d])=>`<article class="card cc"><div class="im">${I('pulse')}</div><div class="b"><h3>${t}</h3><div class="mt"><span>${I('clock')}${d}</span><span><b>${fa(p)}</b> تومان</span></div></div></article>`;
 const posts=[['Spinal cord | نخاع','blog-spinal'],['آموزش پزشکی از پایه','blog-basic'],['آزمایشگاه و علوم تشخیصی','blog-lab'],['مهارت‌های بالینی و تشخیصی','blog-clinical']];
 const postCard=([t,i])=>`<article class="card po"><img src="${i}.jpg" alt="" loading="lazy"><div class="b"><h3>${t}</h3><div class="mt"><a href="#">مطالعه کن</a><span>۵ دقیقه</span></div></div></article>`;
@@ -69,3 +69,8 @@ document.querySelectorAll('form').forEach(f=>f.addEventListener('submit',e=>{e.p
 /* اسکرول خودکار نظرات (راست به چپ، شروع با تأخیر ۰.۷ ثانیه — در style.css: .tr) */
 const tr=document.querySelector('.tr');
 if(tr){const b=[...tr.children];let n=0;while(tr.scrollWidth<innerWidth*1.3&&n++<8)b.forEach(c=>{const k=c.cloneNode(true);k.setAttribute('aria-hidden','true');tr.appendChild(k)});[...tr.children].forEach(c=>tr.appendChild(c.cloneNode(true)))}
+
+/* شمارنده‌های عددی (۲۰+، ۱۰۰۰+، ۵۰) */
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const el=e.target,to=+el.dataset.count,t0=performance.now();
+const f=t=>{const p=Math.min((t-t0)/1600,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString('en-US');if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}),{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(e=>cio.observe(e));
