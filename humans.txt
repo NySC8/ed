@@ -1,0 +1,4 @@
+/* edmedical */
+فرانت‌اند: HTML / CSS / JavaScript بدون فریم‌ورک
+بک‌اند: Supabase (اختیاری)
+فونت: Vazirmatn
